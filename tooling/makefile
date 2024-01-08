@@ -33,7 +33,7 @@ SYNTH_DEVICE_PART = EP3C16F484C6
 SYNTH_CYCLONE3_DEFAULT_ASSIGNMENT_FILE = ./config/boards/cyclone3/assignment_defaults.qdf
 SYNTH_CYCLONE5_DEFAULT_ASSIGNMENT_FILE = ./config/boards/cyclone5/assignment_defaults.qdf
 SYNTH_CYCLONE5_CONSTRAINTS_FILE = ./config/boards/cyclone5/DE0_CV_TOP.sdc
-# either empty variable or path ending with \\ i.e. double backslash
+# either empty variable or path endinu with \\ i.e. double backslash
 # C:\\"Program Files"\\altera\\13.1\\quartus\\bin\\ 
 SYNTH_TOOL_EXE_DIR_PATH = C:\\"Program Files"\\altera\\13.1\\quartus\\bin\\
 

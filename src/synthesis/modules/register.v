@@ -21,7 +21,7 @@ module register #(
 
   always @(posedge clk, negedge rst_n) begin
     if (!rst_n) begin
-      out_reg <= DATA_WIDTH'b0;
+      out_reg <= {DATA_WIDTH{1'b0}};
     end else begin
       out_reg <= out_next;
     end
@@ -31,7 +31,7 @@ module register #(
     out_next = out_reg;
 
     if (cl) begin
-      out_next = DATA_WIDTH'b0;
+      out_next = {DATA_WIDTH{1'b0}};
     end else if (ld) begin
       out_next = in;
     end else if (inc) begin

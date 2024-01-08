@@ -1,0 +1,967 @@
+Analysis & Synthesis report for DE0_TOP
+Mon Jan 08 16:56:29 2024
+Quartus II 32-bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |DE0_TOP|top:top_inst|cpu:cpu|state_reg
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Parameter Settings for User Entity Instance: top:top_inst
+ 13. Parameter Settings for User Entity Instance: top:top_inst|clk_div:div
+ 14. Parameter Settings for User Entity Instance: top:top_inst|memory:memory
+ 15. Parameter Settings for User Entity Instance: top:top_inst|cpu:cpu
+ 16. Parameter Settings for User Entity Instance: top:top_inst|cpu:cpu|register:pc_reg
+ 17. Parameter Settings for User Entity Instance: top:top_inst|cpu:cpu|register:sp_reg
+ 18. Parameter Settings for User Entity Instance: top:top_inst|cpu:cpu|register:ir_high
+ 19. Parameter Settings for User Entity Instance: top:top_inst|cpu:cpu|register:ir_low
+ 20. Parameter Settings for User Entity Instance: top:top_inst|cpu:cpu|register:a_reg
+ 21. Parameter Settings for User Entity Instance: top:top_inst|cpu:cpu|alu:alu_unit
+ 22. Port Connectivity Checks: "top:top_inst|cpu:cpu|register:a_reg"
+ 23. Port Connectivity Checks: "top:top_inst|cpu:cpu|register:ir_low"
+ 24. Port Connectivity Checks: "top:top_inst|cpu:cpu|register:ir_high"
+ 25. Port Connectivity Checks: "top:top_inst|cpu:cpu|register:sp_reg"
+ 26. Port Connectivity Checks: "top:top_inst|cpu:cpu|register:pc_reg"
+ 27. Port Connectivity Checks: "top:top_inst|cpu:cpu"
+ 28. Port Connectivity Checks: "top:top_inst"
+ 29. Elapsed Time Per Partition
+ 30. Analysis & Synthesis Messages
+ 31. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++---------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                    ;
++------------------------------------+--------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Mon Jan 08 16:56:29 2024      ;
+; Quartus II 32-bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
+; Revision Name                      ; DE0_TOP                                    ;
+; Top-level Entity Name              ; DE0_TOP                                    ;
+; Family                             ; Cyclone III                                ;
+; Total logic elements               ; 0                                          ;
+;     Total combinational functions  ; 0                                          ;
+;     Dedicated logic registers      ; 0                                          ;
+; Total registers                    ; 0                                          ;
+; Total pins                         ; 252                                        ;
+; Total virtual pins                 ; 0                                          ;
+; Total memory bits                  ; 0                                          ;
+; Embedded Multiplier 9-bit elements ; 0                                          ;
+; Total PLLs                         ; 0                                          ;
++------------------------------------+--------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Top-level entity name                                                      ; DE0_TOP            ; DE0_TOP            ;
+; Family name                                                                ; CycloneIII         ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 12          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-12        ;   0.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                     ;
++-------------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path    ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                                    ; Library ;
++-------------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------------------------------------+---------+
+; ../src/synthesis/modules/ssd.v      ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive - student.etf.bg.ac.rs/Desktop/Gooning-Processing-Unit/src/synthesis/modules/ssd.v      ;         ;
+; ../src/synthesis/modules/bcd.v      ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive - student.etf.bg.ac.rs/Desktop/Gooning-Processing-Unit/src/synthesis/modules/bcd.v      ;         ;
+; ../src/synthesis/modules/clk_div.v  ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive - student.etf.bg.ac.rs/Desktop/Gooning-Processing-Unit/src/synthesis/modules/clk_div.v  ;         ;
+; ../src/synthesis/modules/alu.v      ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive - student.etf.bg.ac.rs/Desktop/Gooning-Processing-Unit/src/synthesis/modules/alu.v      ;         ;
+; ../src/synthesis/modules/register.v ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive - student.etf.bg.ac.rs/Desktop/Gooning-Processing-Unit/src/synthesis/modules/register.v ;         ;
+; ../src/synthesis/modules/cpu.v      ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive - student.etf.bg.ac.rs/Desktop/Gooning-Processing-Unit/src/synthesis/modules/cpu.v      ;         ;
+; ../src/synthesis/modules/memory.v   ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive - student.etf.bg.ac.rs/Desktop/Gooning-Processing-Unit/src/synthesis/modules/memory.v   ;         ;
+; ../src/synthesis/modules/top.v      ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive - student.etf.bg.ac.rs/Desktop/Gooning-Processing-Unit/src/synthesis/modules/top.v      ;         ;
+; ../src/synthesis/DE0_TOP.v          ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive - student.etf.bg.ac.rs/Desktop/Gooning-Processing-Unit/src/synthesis/DE0_TOP.v          ;         ;
++-------------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                     ;
++---------------------------------------------+-------------------+
+; Resource                                    ; Usage             ;
++---------------------------------------------+-------------------+
+;                                             ;                   ;
+; Total combinational functions               ; 0                 ;
+; Logic element usage by number of LUT inputs ;                   ;
+;     -- 4 input functions                    ; 0                 ;
+;     -- 3 input functions                    ; 0                 ;
+;     -- <=2 input functions                  ; 0                 ;
+;                                             ;                   ;
+; Logic elements by mode                      ;                   ;
+;     -- normal mode                          ; 0                 ;
+;     -- arithmetic mode                      ; 0                 ;
+;                                             ;                   ;
+; Total registers                             ; 0                 ;
+;     -- Dedicated logic registers            ; 0                 ;
+;     -- I/O registers                        ; 0                 ;
+;                                             ;                   ;
+; I/O pins                                    ; 252               ;
+; Embedded Multiplier 9-bit elements          ; 0                 ;
+; Maximum fan-out node                        ; DRAM_DQ[0]~output ;
+; Maximum fan-out                             ; 1                 ;
+; Total fan-out                               ; 363               ;
+; Average fan-out                             ; 0.59              ;
++---------------------------------------------+-------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+; |DE0_TOP                   ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 252  ; 0            ; |DE0_TOP            ; work         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |DE0_TOP|top:top_inst|cpu:cpu|state_reg                                                                       ;
++----------------+----------------+---------------+---------------+---------------+---------------+--------------+--------------+
+; Name           ; state_reg.IDLE ; state_reg.EX4 ; state_reg.EX3 ; state_reg.EX2 ; state_reg.EX1 ; state_reg.ID ; state_reg.IF ;
++----------------+----------------+---------------+---------------+---------------+---------------+--------------+--------------+
+; state_reg.IF   ; 0              ; 0             ; 0             ; 0             ; 0             ; 0            ; 0            ;
+; state_reg.ID   ; 0              ; 0             ; 0             ; 0             ; 0             ; 1            ; 1            ;
+; state_reg.EX1  ; 0              ; 0             ; 0             ; 0             ; 1             ; 0            ; 1            ;
+; state_reg.EX2  ; 0              ; 0             ; 0             ; 1             ; 0             ; 0            ; 1            ;
+; state_reg.EX3  ; 0              ; 0             ; 1             ; 0             ; 0             ; 0            ; 1            ;
+; state_reg.EX4  ; 0              ; 1             ; 0             ; 0             ; 0             ; 0            ; 1            ;
+; state_reg.IDLE ; 1              ; 0             ; 0             ; 0             ; 0             ; 0            ; 1            ;
++----------------+----------------+---------------+---------------+---------------+---------------+--------------+--------------+
+
+
++---------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                          ;
++------------------------------------------------------+--------------------------------------+
+; Register name                                        ; Reason for Removal                   ;
++------------------------------------------------------+--------------------------------------+
+; top:top_inst|cpu:cpu|register:a_reg|out_reg[0..15]   ; Stuck at GND due to stuck port clear ;
+; top:top_inst|cpu:cpu|register:ir_low|out_reg[0..15]  ; Stuck at GND due to stuck port clear ;
+; top:top_inst|cpu:cpu|register:ir_high|out_reg[0..15] ; Stuck at GND due to stuck port clear ;
+; top:top_inst|cpu:cpu|register:sp_reg|out_reg[0..5]   ; Stuck at GND due to stuck port clear ;
+; top:top_inst|cpu:cpu|register:pc_reg|out_reg[0..5]   ; Stuck at GND due to stuck port clear ;
+; top:top_inst|clk_div:div|cnt_reg[0..31]              ; Stuck at GND due to stuck port clear ;
+; top:top_inst|memory:memory|out[0..15]                ; Lost fanout                          ;
+; top:top_inst|cpu:cpu|state_reg~4                     ; Lost fanout                          ;
+; top:top_inst|cpu:cpu|state_reg~5                     ; Lost fanout                          ;
+; top:top_inst|cpu:cpu|state_reg~6                     ; Lost fanout                          ;
+; top:top_inst|cpu:cpu|state_reg.IF                    ; Stuck at GND due to stuck port clear ;
+; top:top_inst|cpu:cpu|state_reg.EX2                   ; Lost fanout                          ;
+; top:top_inst|cpu:cpu|state_reg.EX1                   ; Lost fanout                          ;
+; top:top_inst|cpu:cpu|state_reg.EX3                   ; Lost fanout                          ;
+; top:top_inst|cpu:cpu|state_reg.EX4                   ; Lost fanout                          ;
+; top:top_inst|cpu:cpu|state_reg.ID                    ; Stuck at GND due to stuck port clear ;
+; top:top_inst|cpu:cpu|state_reg.IDLE                  ; Stuck at GND due to stuck port clear ;
+; Total Number of Removed Registers = 118              ;                                      ;
++------------------------------------------------------+--------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                        ;
++-------------------------------------------------+-------------------------+------------------------------------------------------------------------+
+; Register name                                   ; Reason for Removal      ; Registers Removed due to This Register                                 ;
++-------------------------------------------------+-------------------------+------------------------------------------------------------------------+
+; top:top_inst|cpu:cpu|register:a_reg|out_reg[15] ; Stuck at GND            ; top:top_inst|memory:memory|out[14], top:top_inst|memory:memory|out[15] ;
+;                                                 ; due to stuck port clear ;                                                                        ;
+; top:top_inst|cpu:cpu|register:a_reg|out_reg[14] ; Stuck at GND            ; top:top_inst|memory:memory|out[13]                                     ;
+;                                                 ; due to stuck port clear ;                                                                        ;
+; top:top_inst|cpu:cpu|register:a_reg|out_reg[13] ; Stuck at GND            ; top:top_inst|memory:memory|out[12]                                     ;
+;                                                 ; due to stuck port clear ;                                                                        ;
+; top:top_inst|cpu:cpu|register:a_reg|out_reg[12] ; Stuck at GND            ; top:top_inst|memory:memory|out[11]                                     ;
+;                                                 ; due to stuck port clear ;                                                                        ;
+; top:top_inst|cpu:cpu|register:a_reg|out_reg[11] ; Stuck at GND            ; top:top_inst|memory:memory|out[10]                                     ;
+;                                                 ; due to stuck port clear ;                                                                        ;
+; top:top_inst|cpu:cpu|register:a_reg|out_reg[10] ; Stuck at GND            ; top:top_inst|memory:memory|out[9]                                      ;
+;                                                 ; due to stuck port clear ;                                                                        ;
+; top:top_inst|cpu:cpu|register:a_reg|out_reg[9]  ; Stuck at GND            ; top:top_inst|memory:memory|out[8]                                      ;
+;                                                 ; due to stuck port clear ;                                                                        ;
+; top:top_inst|cpu:cpu|register:a_reg|out_reg[8]  ; Stuck at GND            ; top:top_inst|memory:memory|out[7]                                      ;
+;                                                 ; due to stuck port clear ;                                                                        ;
+; top:top_inst|cpu:cpu|register:a_reg|out_reg[7]  ; Stuck at GND            ; top:top_inst|memory:memory|out[6]                                      ;
+;                                                 ; due to stuck port clear ;                                                                        ;
+; top:top_inst|cpu:cpu|register:a_reg|out_reg[6]  ; Stuck at GND            ; top:top_inst|memory:memory|out[5]                                      ;
+;                                                 ; due to stuck port clear ;                                                                        ;
+; top:top_inst|cpu:cpu|register:a_reg|out_reg[5]  ; Stuck at GND            ; top:top_inst|memory:memory|out[4]                                      ;
+;                                                 ; due to stuck port clear ;                                                                        ;
+; top:top_inst|cpu:cpu|register:a_reg|out_reg[4]  ; Stuck at GND            ; top:top_inst|memory:memory|out[3]                                      ;
+;                                                 ; due to stuck port clear ;                                                                        ;
+; top:top_inst|cpu:cpu|register:a_reg|out_reg[3]  ; Stuck at GND            ; top:top_inst|memory:memory|out[2]                                      ;
+;                                                 ; due to stuck port clear ;                                                                        ;
+; top:top_inst|cpu:cpu|register:a_reg|out_reg[2]  ; Stuck at GND            ; top:top_inst|memory:memory|out[1]                                      ;
+;                                                 ; due to stuck port clear ;                                                                        ;
+; top:top_inst|cpu:cpu|register:a_reg|out_reg[1]  ; Stuck at GND            ; top:top_inst|memory:memory|out[0]                                      ;
+;                                                 ; due to stuck port clear ;                                                                        ;
+; top:top_inst|cpu:cpu|state_reg~4                ; Lost Fanouts            ; top:top_inst|cpu:cpu|state_reg.EX1                                     ;
++-------------------------------------------------+-------------------------+------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: top:top_inst ;
++----------------+--------------+---------------------------+
+; Parameter Name ; Value        ; Type                      ;
++----------------+--------------+---------------------------+
+; DIVISOR        ; 50000000     ; Signed Integer            ;
+; FILE_NAME      ; mem_init.mif ; String                    ;
+; ADDR_WIDTH     ; 6            ; Signed Integer            ;
+; DATA_WIDTH     ; 16           ; Signed Integer            ;
++----------------+--------------+---------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: top:top_inst|clk_div:div ;
++----------------+----------+-------------------------------------------+
+; Parameter Name ; Value    ; Type                                      ;
++----------------+----------+-------------------------------------------+
+; DIVISOR        ; 50000000 ; Signed Integer                            ;
++----------------+----------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: top:top_inst|memory:memory ;
++----------------+--------------+-----------------------------------------+
+; Parameter Name ; Value        ; Type                                    ;
++----------------+--------------+-----------------------------------------+
+; FILE_NAME      ; mem_init.mif ; String                                  ;
+; ADDR_WIDTH     ; 6            ; Signed Integer                          ;
+; DATA_WIDTH     ; 16           ; Signed Integer                          ;
++----------------+--------------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: top:top_inst|cpu:cpu ;
++----------------+-------+------------------------------------------+
+; Parameter Name ; Value ; Type                                     ;
++----------------+-------+------------------------------------------+
+; ADDR_WIDTH     ; 6     ; Signed Integer                           ;
+; DATA_WIDTH     ; 16    ; Signed Integer                           ;
++----------------+-------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: top:top_inst|cpu:cpu|register:pc_reg ;
++----------------+-------+----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                     ;
++----------------+-------+----------------------------------------------------------+
+; DATA_WIDTH     ; 6     ; Signed Integer                                           ;
++----------------+-------+----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: top:top_inst|cpu:cpu|register:sp_reg ;
++----------------+-------+----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                     ;
++----------------+-------+----------------------------------------------------------+
+; DATA_WIDTH     ; 6     ; Signed Integer                                           ;
++----------------+-------+----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: top:top_inst|cpu:cpu|register:ir_high ;
++----------------+-------+-----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                      ;
++----------------+-------+-----------------------------------------------------------+
+; DATA_WIDTH     ; 16    ; Signed Integer                                            ;
++----------------+-------+-----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: top:top_inst|cpu:cpu|register:ir_low ;
++----------------+-------+----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                     ;
++----------------+-------+----------------------------------------------------------+
+; DATA_WIDTH     ; 16    ; Signed Integer                                           ;
++----------------+-------+----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: top:top_inst|cpu:cpu|register:a_reg ;
++----------------+-------+---------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                    ;
++----------------+-------+---------------------------------------------------------+
+; DATA_WIDTH     ; 16    ; Signed Integer                                          ;
++----------------+-------+---------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: top:top_inst|cpu:cpu|alu:alu_unit ;
++----------------+-------+-------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                  ;
++----------------+-------+-------------------------------------------------------+
+; DATA_WIDTH     ; 16    ; Signed Integer                                        ;
++----------------+-------+-------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "top:top_inst|cpu:cpu|register:a_reg"                                                                                                                                                 ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port    ; Type  ; Severity ; Details                                                                                                                                                                            ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; cl      ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; cl[-1]  ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; inc     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; inc[-1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; dec     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; dec[-1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; sr      ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; sr[-1]  ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; ir      ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; ir[-1]  ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; sl      ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; sl[-1]  ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; il      ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; il[-1]  ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "top:top_inst|cpu:cpu|register:ir_low"                                                                                                                                                ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port    ; Type  ; Severity ; Details                                                                                                                                                                            ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; cl      ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; cl[-1]  ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; inc     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; inc[-1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; dec     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; dec[-1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; sr      ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; sr[-1]  ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; ir      ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; ir[-1]  ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; sl      ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; sl[-1]  ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; il      ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; il[-1]  ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "top:top_inst|cpu:cpu|register:ir_high"                                                                                                                                                ;
++---------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                                                                                                                            ;
++---------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; cl      ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; cl[-1]  ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; inc     ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; inc[-1] ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; dec     ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; dec[-1] ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; sr      ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; sr[-1]  ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; ir      ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; ir[-1]  ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; sl      ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; sl[-1]  ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; il      ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; il[-1]  ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; out[11] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
+; out[7]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
++---------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "top:top_inst|cpu:cpu|register:sp_reg"                                                                                                                                                 ;
++----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port     ; Type  ; Severity ; Details                                                                                                                                                                            ;
++----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; cl       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; cl[-1]   ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; ld       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; ld[-1]   ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; inc      ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; inc[-1]  ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; dec      ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; dec[-1]  ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; sr       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; sr[-1]   ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; ir       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; ir[-1]   ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; sl       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; sl[-1]   ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; il       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; il[-1]   ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; in       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (6 bits) it drives.  The 26 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; in[5..0] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "top:top_inst|cpu:cpu|register:pc_reg"                                                                                                                                                ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port    ; Type  ; Severity ; Details                                                                                                                                                                            ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; cl      ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; cl[-1]  ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; ld      ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; dec     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; dec[-1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; sr      ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; sr[-1]  ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; ir      ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; ir[-1]  ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; sl      ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; sl[-1]  ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; il      ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; il[-1]  ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; in      ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "top:top_inst|cpu:cpu"                                                                                                                        ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                                                                                      ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; in   ; Input  ; Warning  ; Input port expression (4 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "in[15..4]" will be connected to GND. ;
+; out  ; Output ; Warning  ; Output or bidir port (16 bits) is wider than the port expression (5 bits) it drives; bit(s) "out[15..5]" have no fanouts                     ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "top:top_inst"                                                                                                                                                                     ;
++-------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port  ; Type  ; Severity ; Details                                                                                                                                                                           ;
++-------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; sw    ; Input ; Warning  ; Input port expression (10 bits) is wider than the input port (9 bits) it drives.  The 1 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; rst_n ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND.                                      ;
++-------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 32-bit Analysis & Synthesis
+    Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+    Info: Copyright (C) 1991-2013 Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and its AMPP partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, Altera MegaCore Function License 
+    Info: Agreement, or other applicable license agreement, including, 
+    Info: without limitation, that your use is for the sole purpose of 
+    Info: programming logic devices manufactured by Altera and sold by 
+    Info: Altera or its authorized distributors.  Please refer to the 
+    Info: applicable agreement for further details.
+    Info: Processing started: Mon Jan 08 16:56:13 2024
+Info: Command: quartus_map --family=CycloneIII --source=../src/synthesis/modules/ssd.v --source=../src/synthesis/modules/bcd.v --source=../src/synthesis/modules/debouncer.v --source=../src/synthesis/modules/red.v --source=../src/synthesis/modules/clk_div.v --source=../src/synthesis/modules/alu.v --source=../src/synthesis/modules/register.v --source=../src/synthesis/modules/cpu.v --source=../src/synthesis/modules/memory.v --source=../src/synthesis/modules/top.v --source=../src/synthesis/DE0_CV_TOP.v --source=../src/synthesis/DE0_TOP.v DE0_TOP
+Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive - student.etf.bg.ac.rs/desktop/gooning-processing-unit/src/synthesis/modules/ssd.v
+    Info (12023): Found entity 1: ssd
+Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive - student.etf.bg.ac.rs/desktop/gooning-processing-unit/src/synthesis/modules/bcd.v
+    Info (12023): Found entity 1: bcd
+Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive - student.etf.bg.ac.rs/desktop/gooning-processing-unit/src/synthesis/modules/debouncer.v
+    Info (12023): Found entity 1: debouncer
+Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive - student.etf.bg.ac.rs/desktop/gooning-processing-unit/src/synthesis/modules/red.v
+    Info (12023): Found entity 1: red
+Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive - student.etf.bg.ac.rs/desktop/gooning-processing-unit/src/synthesis/modules/clk_div.v
+    Info (12023): Found entity 1: clk_div
+Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive - student.etf.bg.ac.rs/desktop/gooning-processing-unit/src/synthesis/modules/alu.v
+    Info (12023): Found entity 1: alu
+Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive - student.etf.bg.ac.rs/desktop/gooning-processing-unit/src/synthesis/modules/register.v
+    Info (12023): Found entity 1: register
+Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive - student.etf.bg.ac.rs/desktop/gooning-processing-unit/src/synthesis/modules/cpu.v
+    Info (12023): Found entity 1: cpu
+Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive - student.etf.bg.ac.rs/desktop/gooning-processing-unit/src/synthesis/modules/memory.v
+    Info (12023): Found entity 1: memory
+Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive - student.etf.bg.ac.rs/desktop/gooning-processing-unit/src/synthesis/modules/top.v
+    Info (12023): Found entity 1: top
+Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive - student.etf.bg.ac.rs/desktop/gooning-processing-unit/src/synthesis/de0_cv_top.v
+    Info (12023): Found entity 1: DE0_CV_TOP
+Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive - student.etf.bg.ac.rs/desktop/gooning-processing-unit/src/synthesis/de0_top.v
+    Info (12023): Found entity 1: DE0_TOP
+Warning (10236): Verilog HDL Implicit Net warning at debouncer.v(15): created implicit net for "changed"
+Warning (10236): Verilog HDL Implicit Net warning at debouncer.v(16): created implicit net for "stable"
+Info (12127): Elaborating entity "DE0_TOP" for the top level hierarchy
+Warning (10034): Output port "DRAM_ADDR" at DE0_TOP.v(150) has no driver
+Warning (10034): Output port "FL_ADDR" at DE0_TOP.v(164) has no driver
+Warning (10034): Output port "VGA_R" at DE0_TOP.v(192) has no driver
+Warning (10034): Output port "VGA_G" at DE0_TOP.v(193) has no driver
+Warning (10034): Output port "VGA_B" at DE0_TOP.v(194) has no driver
+Warning (10034): Output port "GPIO0_CLKOUT" at DE0_TOP.v(197) has no driver
+Warning (10034): Output port "GPIO1_CLKOUT" at DE0_TOP.v(200) has no driver
+Warning (10034): Output port "UART_TXD" at DE0_TOP.v(144) has no driver
+Warning (10034): Output port "UART_CTS" at DE0_TOP.v(146) has no driver
+Warning (10034): Output port "DRAM_LDQM" at DE0_TOP.v(151) has no driver
+Warning (10034): Output port "DRAM_UDQM" at DE0_TOP.v(152) has no driver
+Warning (10034): Output port "DRAM_WE_N" at DE0_TOP.v(153) has no driver
+Warning (10034): Output port "DRAM_CAS_N" at DE0_TOP.v(154) has no driver
+Warning (10034): Output port "DRAM_RAS_N" at DE0_TOP.v(155) has no driver
+Warning (10034): Output port "DRAM_CS_N" at DE0_TOP.v(156) has no driver
+Warning (10034): Output port "DRAM_BA_0" at DE0_TOP.v(157) has no driver
+Warning (10034): Output port "DRAM_BA_1" at DE0_TOP.v(158) has no driver
+Warning (10034): Output port "DRAM_CLK" at DE0_TOP.v(159) has no driver
+Warning (10034): Output port "DRAM_CKE" at DE0_TOP.v(160) has no driver
+Warning (10034): Output port "FL_WE_N" at DE0_TOP.v(165) has no driver
+Warning (10034): Output port "FL_RST_N" at DE0_TOP.v(166) has no driver
+Warning (10034): Output port "FL_OE_N" at DE0_TOP.v(167) has no driver
+Warning (10034): Output port "FL_CE_N" at DE0_TOP.v(168) has no driver
+Warning (10034): Output port "FL_WP_N" at DE0_TOP.v(169) has no driver
+Warning (10034): Output port "FL_BYTE_N" at DE0_TOP.v(170) has no driver
+Warning (10034): Output port "LCD_BLON" at DE0_TOP.v(174) has no driver
+Warning (10034): Output port "LCD_RW" at DE0_TOP.v(175) has no driver
+Warning (10034): Output port "LCD_EN" at DE0_TOP.v(176) has no driver
+Warning (10034): Output port "LCD_RS" at DE0_TOP.v(177) has no driver
+Warning (10034): Output port "SD_CLK" at DE0_TOP.v(182) has no driver
+Warning (10034): Output port "VGA_HS" at DE0_TOP.v(190) has no driver
+Warning (10034): Output port "VGA_VS" at DE0_TOP.v(191) has no driver
+Info (12128): Elaborating entity "top" for hierarchy "top:top_inst"
+Warning (10034): Output port "led[9..5]" at top.v(11) has no driver
+Info (12128): Elaborating entity "clk_div" for hierarchy "top:top_inst|clk_div:div"
+Info (12128): Elaborating entity "memory" for hierarchy "top:top_inst|memory:memory"
+Info (12128): Elaborating entity "cpu" for hierarchy "top:top_inst|cpu:cpu"
+Warning (10036): Verilog HDL or VHDL warning at cpu.v(62): object "op_a_mode" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at cpu.v(64): object "op_b_mode" assigned a value but never read
+Warning (10230): Verilog HDL assignment warning at cpu.v(128): truncated value with size 32 to match size of target (3)
+Warning (10230): Verilog HDL assignment warning at cpu.v(191): truncated value with size 32 to match size of target (6)
+Warning (10230): Verilog HDL assignment warning at cpu.v(201): truncated value with size 32 to match size of target (6)
+Warning (10034): Output port "out" at cpu.v(13) has no driver
+Info (12128): Elaborating entity "register" for hierarchy "top:top_inst|cpu:cpu|register:pc_reg"
+Warning (10230): Verilog HDL assignment warning at register.v(38): truncated value with size 32 to match size of target (6)
+Warning (10230): Verilog HDL assignment warning at register.v(40): truncated value with size 32 to match size of target (6)
+Info (12128): Elaborating entity "register" for hierarchy "top:top_inst|cpu:cpu|register:ir_high"
+Warning (10230): Verilog HDL assignment warning at register.v(38): truncated value with size 32 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at register.v(40): truncated value with size 32 to match size of target (16)
+Info (12128): Elaborating entity "alu" for hierarchy "top:top_inst|cpu:cpu|alu:alu_unit"
+Info (12128): Elaborating entity "bcd" for hierarchy "top:top_inst|bcd:bcd_pc"
+Warning (10230): Verilog HDL assignment warning at bcd.v(7): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at bcd.v(8): truncated value with size 32 to match size of target (4)
+Info (12128): Elaborating entity "ssd" for hierarchy "top:top_inst|ssd:ssd_pc_tens"
+Warning (12241): 7 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13039): The following bidir pins have no drivers
+    Warning (13040): Bidir "DRAM_DQ[0]" has no driver
+    Warning (13040): Bidir "DRAM_DQ[1]" has no driver
+    Warning (13040): Bidir "DRAM_DQ[2]" has no driver
+    Warning (13040): Bidir "DRAM_DQ[3]" has no driver
+    Warning (13040): Bidir "DRAM_DQ[4]" has no driver
+    Warning (13040): Bidir "DRAM_DQ[5]" has no driver
+    Warning (13040): Bidir "DRAM_DQ[6]" has no driver
+    Warning (13040): Bidir "DRAM_DQ[7]" has no driver
+    Warning (13040): Bidir "DRAM_DQ[8]" has no driver
+    Warning (13040): Bidir "DRAM_DQ[9]" has no driver
+    Warning (13040): Bidir "DRAM_DQ[10]" has no driver
+    Warning (13040): Bidir "DRAM_DQ[11]" has no driver
+    Warning (13040): Bidir "DRAM_DQ[12]" has no driver
+    Warning (13040): Bidir "DRAM_DQ[13]" has no driver
+    Warning (13040): Bidir "DRAM_DQ[14]" has no driver
+    Warning (13040): Bidir "DRAM_DQ[15]" has no driver
+    Warning (13040): Bidir "FL_DQ[0]" has no driver
+    Warning (13040): Bidir "FL_DQ[1]" has no driver
+    Warning (13040): Bidir "FL_DQ[2]" has no driver
+    Warning (13040): Bidir "FL_DQ[3]" has no driver
+    Warning (13040): Bidir "FL_DQ[4]" has no driver
+    Warning (13040): Bidir "FL_DQ[5]" has no driver
+    Warning (13040): Bidir "FL_DQ[6]" has no driver
+    Warning (13040): Bidir "FL_DQ[7]" has no driver
+    Warning (13040): Bidir "FL_DQ[8]" has no driver
+    Warning (13040): Bidir "FL_DQ[9]" has no driver
+    Warning (13040): Bidir "FL_DQ[10]" has no driver
+    Warning (13040): Bidir "FL_DQ[11]" has no driver
+    Warning (13040): Bidir "FL_DQ[12]" has no driver
+    Warning (13040): Bidir "FL_DQ[13]" has no driver
+    Warning (13040): Bidir "FL_DQ[14]" has no driver
+    Warning (13040): Bidir "FL_DQ15_AM1" has no driver
+    Warning (13040): Bidir "LCD_DATA[0]" has no driver
+    Warning (13040): Bidir "LCD_DATA[1]" has no driver
+    Warning (13040): Bidir "LCD_DATA[2]" has no driver
+    Warning (13040): Bidir "LCD_DATA[3]" has no driver
+    Warning (13040): Bidir "LCD_DATA[4]" has no driver
+    Warning (13040): Bidir "LCD_DATA[5]" has no driver
+    Warning (13040): Bidir "LCD_DATA[6]" has no driver
+    Warning (13040): Bidir "LCD_DATA[7]" has no driver
+    Warning (13040): Bidir "SD_DAT0" has no driver
+    Warning (13040): Bidir "SD_DAT3" has no driver
+    Warning (13040): Bidir "SD_CMD" has no driver
+    Warning (13040): Bidir "PS2_KBDAT" has no driver
+    Warning (13040): Bidir "PS2_KBCLK" has no driver
+    Warning (13040): Bidir "PS2_MSDAT" has no driver
+    Warning (13040): Bidir "PS2_MSCLK" has no driver
+    Warning (13040): Bidir "GPIO0_D[0]" has no driver
+    Warning (13040): Bidir "GPIO0_D[1]" has no driver
+    Warning (13040): Bidir "GPIO0_D[2]" has no driver
+    Warning (13040): Bidir "GPIO0_D[3]" has no driver
+    Warning (13040): Bidir "GPIO0_D[4]" has no driver
+    Warning (13040): Bidir "GPIO0_D[5]" has no driver
+    Warning (13040): Bidir "GPIO0_D[6]" has no driver
+    Warning (13040): Bidir "GPIO0_D[7]" has no driver
+    Warning (13040): Bidir "GPIO0_D[8]" has no driver
+    Warning (13040): Bidir "GPIO0_D[9]" has no driver
+    Warning (13040): Bidir "GPIO0_D[10]" has no driver
+    Warning (13040): Bidir "GPIO0_D[11]" has no driver
+    Warning (13040): Bidir "GPIO0_D[12]" has no driver
+    Warning (13040): Bidir "GPIO0_D[13]" has no driver
+    Warning (13040): Bidir "GPIO0_D[14]" has no driver
+    Warning (13040): Bidir "GPIO0_D[15]" has no driver
+    Warning (13040): Bidir "GPIO0_D[16]" has no driver
+    Warning (13040): Bidir "GPIO0_D[17]" has no driver
+    Warning (13040): Bidir "GPIO0_D[18]" has no driver
+    Warning (13040): Bidir "GPIO0_D[19]" has no driver
+    Warning (13040): Bidir "GPIO0_D[20]" has no driver
+    Warning (13040): Bidir "GPIO0_D[21]" has no driver
+    Warning (13040): Bidir "GPIO0_D[22]" has no driver
+    Warning (13040): Bidir "GPIO0_D[23]" has no driver
+    Warning (13040): Bidir "GPIO0_D[24]" has no driver
+    Warning (13040): Bidir "GPIO0_D[25]" has no driver
+    Warning (13040): Bidir "GPIO0_D[26]" has no driver
+    Warning (13040): Bidir "GPIO0_D[27]" has no driver
+    Warning (13040): Bidir "GPIO0_D[28]" has no driver
+    Warning (13040): Bidir "GPIO0_D[29]" has no driver
+    Warning (13040): Bidir "GPIO0_D[30]" has no driver
+    Warning (13040): Bidir "GPIO0_D[31]" has no driver
+    Warning (13040): Bidir "GPIO1_D[0]" has no driver
+    Warning (13040): Bidir "GPIO1_D[1]" has no driver
+    Warning (13040): Bidir "GPIO1_D[2]" has no driver
+    Warning (13040): Bidir "GPIO1_D[3]" has no driver
+    Warning (13040): Bidir "GPIO1_D[4]" has no driver
+    Warning (13040): Bidir "GPIO1_D[5]" has no driver
+    Warning (13040): Bidir "GPIO1_D[6]" has no driver
+    Warning (13040): Bidir "GPIO1_D[7]" has no driver
+    Warning (13040): Bidir "GPIO1_D[8]" has no driver
+    Warning (13040): Bidir "GPIO1_D[9]" has no driver
+    Warning (13040): Bidir "GPIO1_D[10]" has no driver
+    Warning (13040): Bidir "GPIO1_D[11]" has no driver
+    Warning (13040): Bidir "GPIO1_D[12]" has no driver
+    Warning (13040): Bidir "GPIO1_D[13]" has no driver
+    Warning (13040): Bidir "GPIO1_D[14]" has no driver
+    Warning (13040): Bidir "GPIO1_D[15]" has no driver
+    Warning (13040): Bidir "GPIO1_D[16]" has no driver
+    Warning (13040): Bidir "GPIO1_D[17]" has no driver
+    Warning (13040): Bidir "GPIO1_D[18]" has no driver
+    Warning (13040): Bidir "GPIO1_D[19]" has no driver
+    Warning (13040): Bidir "GPIO1_D[20]" has no driver
+    Warning (13040): Bidir "GPIO1_D[21]" has no driver
+    Warning (13040): Bidir "GPIO1_D[22]" has no driver
+    Warning (13040): Bidir "GPIO1_D[23]" has no driver
+    Warning (13040): Bidir "GPIO1_D[24]" has no driver
+    Warning (13040): Bidir "GPIO1_D[25]" has no driver
+    Warning (13040): Bidir "GPIO1_D[26]" has no driver
+    Warning (13040): Bidir "GPIO1_D[27]" has no driver
+    Warning (13040): Bidir "GPIO1_D[28]" has no driver
+    Warning (13040): Bidir "GPIO1_D[29]" has no driver
+    Warning (13040): Bidir "GPIO1_D[30]" has no driver
+    Warning (13040): Bidir "GPIO1_D[31]" has no driver
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "HEX0_D[0]" is stuck at GND
+    Warning (13410): Pin "HEX0_D[1]" is stuck at GND
+    Warning (13410): Pin "HEX0_D[2]" is stuck at GND
+    Warning (13410): Pin "HEX0_D[3]" is stuck at GND
+    Warning (13410): Pin "HEX0_D[4]" is stuck at GND
+    Warning (13410): Pin "HEX0_D[5]" is stuck at GND
+    Warning (13410): Pin "HEX0_D[6]" is stuck at VCC
+    Warning (13410): Pin "HEX0_DP" is stuck at VCC
+    Warning (13410): Pin "HEX1_D[0]" is stuck at GND
+    Warning (13410): Pin "HEX1_D[1]" is stuck at GND
+    Warning (13410): Pin "HEX1_D[2]" is stuck at GND
+    Warning (13410): Pin "HEX1_D[3]" is stuck at GND
+    Warning (13410): Pin "HEX1_D[4]" is stuck at GND
+    Warning (13410): Pin "HEX1_D[5]" is stuck at GND
+    Warning (13410): Pin "HEX1_D[6]" is stuck at VCC
+    Warning (13410): Pin "HEX1_DP" is stuck at VCC
+    Warning (13410): Pin "HEX2_D[0]" is stuck at GND
+    Warning (13410): Pin "HEX2_D[1]" is stuck at GND
+    Warning (13410): Pin "HEX2_D[2]" is stuck at GND
+    Warning (13410): Pin "HEX2_D[3]" is stuck at GND
+    Warning (13410): Pin "HEX2_D[4]" is stuck at GND
+    Warning (13410): Pin "HEX2_D[5]" is stuck at GND
+    Warning (13410): Pin "HEX2_D[6]" is stuck at VCC
+    Warning (13410): Pin "HEX2_DP" is stuck at VCC
+    Warning (13410): Pin "HEX3_D[0]" is stuck at GND
+    Warning (13410): Pin "HEX3_D[1]" is stuck at GND
+    Warning (13410): Pin "HEX3_D[2]" is stuck at GND
+    Warning (13410): Pin "HEX3_D[3]" is stuck at GND
+    Warning (13410): Pin "HEX3_D[4]" is stuck at GND
+    Warning (13410): Pin "HEX3_D[5]" is stuck at GND
+    Warning (13410): Pin "HEX3_D[6]" is stuck at VCC
+    Warning (13410): Pin "HEX3_DP" is stuck at VCC
+    Warning (13410): Pin "LEDG[0]" is stuck at GND
+    Warning (13410): Pin "LEDG[1]" is stuck at GND
+    Warning (13410): Pin "LEDG[2]" is stuck at GND
+    Warning (13410): Pin "LEDG[3]" is stuck at GND
+    Warning (13410): Pin "LEDG[4]" is stuck at GND
+    Warning (13410): Pin "LEDG[5]" is stuck at GND
+    Warning (13410): Pin "LEDG[6]" is stuck at GND
+    Warning (13410): Pin "LEDG[7]" is stuck at GND
+    Warning (13410): Pin "LEDG[8]" is stuck at GND
+    Warning (13410): Pin "LEDG[9]" is stuck at GND
+    Warning (13410): Pin "UART_TXD" is stuck at GND
+    Warning (13410): Pin "UART_CTS" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[0]" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[1]" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[2]" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[3]" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[4]" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[5]" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[6]" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[7]" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[8]" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[9]" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[10]" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[11]" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[12]" is stuck at GND
+    Warning (13410): Pin "DRAM_LDQM" is stuck at GND
+    Warning (13410): Pin "DRAM_UDQM" is stuck at GND
+    Warning (13410): Pin "DRAM_WE_N" is stuck at GND
+    Warning (13410): Pin "DRAM_CAS_N" is stuck at GND
+    Warning (13410): Pin "DRAM_RAS_N" is stuck at GND
+    Warning (13410): Pin "DRAM_CS_N" is stuck at GND
+    Warning (13410): Pin "DRAM_BA_0" is stuck at GND
+    Warning (13410): Pin "DRAM_BA_1" is stuck at GND
+    Warning (13410): Pin "DRAM_CLK" is stuck at GND
+    Warning (13410): Pin "DRAM_CKE" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[0]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[1]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[2]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[3]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[4]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[5]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[6]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[7]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[8]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[9]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[10]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[11]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[12]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[13]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[14]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[15]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[16]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[17]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[18]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[19]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[20]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[21]" is stuck at GND
+    Warning (13410): Pin "FL_WE_N" is stuck at GND
+    Warning (13410): Pin "FL_RST_N" is stuck at GND
+    Warning (13410): Pin "FL_OE_N" is stuck at GND
+    Warning (13410): Pin "FL_CE_N" is stuck at GND
+    Warning (13410): Pin "FL_WP_N" is stuck at GND
+    Warning (13410): Pin "FL_BYTE_N" is stuck at GND
+    Warning (13410): Pin "LCD_BLON" is stuck at GND
+    Warning (13410): Pin "LCD_RW" is stuck at GND
+    Warning (13410): Pin "LCD_EN" is stuck at GND
+    Warning (13410): Pin "LCD_RS" is stuck at GND
+    Warning (13410): Pin "SD_CLK" is stuck at GND
+    Warning (13410): Pin "VGA_HS" is stuck at GND
+    Warning (13410): Pin "VGA_VS" is stuck at GND
+    Warning (13410): Pin "VGA_R[0]" is stuck at GND
+    Warning (13410): Pin "VGA_R[1]" is stuck at GND
+    Warning (13410): Pin "VGA_R[2]" is stuck at GND
+    Warning (13410): Pin "VGA_R[3]" is stuck at GND
+    Warning (13410): Pin "VGA_G[0]" is stuck at GND
+    Warning (13410): Pin "VGA_G[1]" is stuck at GND
+    Warning (13410): Pin "VGA_G[2]" is stuck at GND
+    Warning (13410): Pin "VGA_G[3]" is stuck at GND
+    Warning (13410): Pin "VGA_B[0]" is stuck at GND
+    Warning (13410): Pin "VGA_B[1]" is stuck at GND
+    Warning (13410): Pin "VGA_B[2]" is stuck at GND
+    Warning (13410): Pin "VGA_B[3]" is stuck at GND
+    Warning (13410): Pin "GPIO0_CLKOUT[0]" is stuck at GND
+    Warning (13410): Pin "GPIO0_CLKOUT[1]" is stuck at GND
+    Warning (13410): Pin "GPIO1_CLKOUT[0]" is stuck at GND
+    Warning (13410): Pin "GPIO1_CLKOUT[1]" is stuck at GND
+Info (17049): 23 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file C:/Users/xparh/OneDrive - student.etf.bg.ac.rs/Desktop/Gooning-Processing-Unit/tooling/DE0_TOP.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 23 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "CLOCK_50"
+    Warning (15610): No output dependent on input pin "CLOCK_50_2"
+    Warning (15610): No output dependent on input pin "BUTTON[0]"
+    Warning (15610): No output dependent on input pin "BUTTON[1]"
+    Warning (15610): No output dependent on input pin "BUTTON[2]"
+    Warning (15610): No output dependent on input pin "SW[0]"
+    Warning (15610): No output dependent on input pin "SW[1]"
+    Warning (15610): No output dependent on input pin "SW[2]"
+    Warning (15610): No output dependent on input pin "SW[3]"
+    Warning (15610): No output dependent on input pin "SW[4]"
+    Warning (15610): No output dependent on input pin "SW[5]"
+    Warning (15610): No output dependent on input pin "SW[6]"
+    Warning (15610): No output dependent on input pin "SW[7]"
+    Warning (15610): No output dependent on input pin "SW[8]"
+    Warning (15610): No output dependent on input pin "SW[9]"
+    Warning (15610): No output dependent on input pin "UART_RXD"
+    Warning (15610): No output dependent on input pin "UART_RTS"
+    Warning (15610): No output dependent on input pin "FL_RY"
+    Warning (15610): No output dependent on input pin "SD_WP_N"
+    Warning (15610): No output dependent on input pin "GPIO0_CLKIN[0]"
+    Warning (15610): No output dependent on input pin "GPIO0_CLKIN[1]"
+    Warning (15610): No output dependent on input pin "GPIO1_CLKIN[0]"
+    Warning (15610): No output dependent on input pin "GPIO1_CLKIN[1]"
+Info (21057): Implemented 252 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 23 input pins
+    Info (21059): Implemented 118 output pins
+    Info (21060): Implemented 111 bidirectional pins
+Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 303 warnings
+    Info: Peak virtual memory: 402 megabytes
+    Info: Processing ended: Mon Jan 08 16:56:29 2024
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:46
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/xparh/OneDrive - student.etf.bg.ac.rs/Desktop/Gooning-Processing-Unit/tooling/DE0_TOP.map.smsg.
+
+

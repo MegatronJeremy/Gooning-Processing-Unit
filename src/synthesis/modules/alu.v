@@ -1,4 +1,4 @@
-module moduleName #(
+module alu #(
     DATA_WIDTH = 16
 ) (
     input [2:0] in,
@@ -7,7 +7,7 @@ module moduleName #(
     output [DATA_WIDTH-1:0] f
 );
 
-    assign f =  (in == 3'b000) ? a + b :
+  assign f =  (in == 3'b000) ? a + b :
                     (in == 3'b001) ? a - b :
                     (in == 3'b010) ? a * b :
                     (in == 3'b011) ? a / b :
@@ -15,6 +15,6 @@ module moduleName #(
                     (in == 3'b101) ? a ^ b :
                     (in == 3'b110) ? a | b :
                     (in == 3'b111) ? a & b :
-                    DATA_WIDTH'b0;
+                    {DATA_WIDTH{1'b0}};
 
 endmodule

@@ -6,7 +6,6 @@ module top #(
 ) (
     input clk,
     input rst_n,
-    input [2:0] btn,
     input [8:0] sw,
     output [9:0] led,
     output [27:0] hex
@@ -49,7 +48,6 @@ module top #(
       .rst_n(rst_n),
       .mem_in(mem_out),
       .in(sw[3:0]),
-      .control(btn[0]),
       .mem_we(mem_we),
       .mem_addr(mem_addr),
       .mem_data(mem_data),

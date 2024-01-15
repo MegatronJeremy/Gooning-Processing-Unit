@@ -1,5 +1,5 @@
 Fitter report for DE0_TOP
-Mon Jan 08 16:57:30 2024
+Tue Jan 16 00:14:41 2024
 Quartus II 32-bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -59,7 +59,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Fitter Summary                                                                  ;
 +------------------------------------+--------------------------------------------+
-; Fitter Status                      ; Successful - Mon Jan 08 16:57:29 2024      ;
+; Fitter Status                      ; Successful - Tue Jan 16 00:14:41 2024      ;
 ; Quartus II 32-bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; DE0_TOP                                    ;
 ; Top-level Entity Name              ; DE0_TOP                                    ;
@@ -2212,9 +2212,9 @@ Info (332130): Timing requirements not specified -- quality metrics such as perf
 Info (176233): Starting register packing
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
-Info (171121): Fitter preparation operations ending: elapsed time is 00:00:15
+Info (171121): Fitter preparation operations ending: elapsed time is 00:00:12
 Info (170189): Fitter placement preparation operations beginning
-Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:01
+Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:00
 Info (170191): Fitter placement operations beginning
 Info (170137): Fitter placement was successful
 Info (170192): Fitter placement operations ending: elapsed time is 00:00:00
@@ -2225,12 +2225,12 @@ Info (170194): Fitter routing operations ending: elapsed time is 00:00:01
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
-Info (11888): Total time spent on timing analysis during the Fitter is 2.84 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 1.08 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:07
+Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:06
 Warning (169177): 134 pins must meet Altera requirements for 3.3-, 3.0-, and 2.5-V interfaces. For more information, refer to AN 447: Interfacing Cyclone III Devices with 3.3/3.0/2.5-V LVTTL/LVCMOS I/O Systems.
     Info (169178): Pin CLOCK_50 uses I/O standard 3.3-V LVTTL at G21
     Info (169178): Pin CLOCK_50_2 uses I/O standard 3.3-V LVTTL at B12
@@ -2481,9 +2481,9 @@ Warning (169064): Following 111 pins have no output enable or a GND or VCC outpu
 Info (144001): Generated suppressed messages file C:/Users/xparh/OneDrive - student.etf.bg.ac.rs/Desktop/Gooning-Processing-Unit/tooling/DE0_TOP.fit.smsg
 Info: Quartus II 32-bit Fitter was successful. 0 errors, 6 warnings
     Info: Peak virtual memory: 737 megabytes
-    Info: Processing ended: Mon Jan 08 16:57:30 2024
-    Info: Elapsed time: 00:00:59
-    Info: Total CPU time (on all processors): 00:03:24
+    Info: Processing ended: Tue Jan 16 00:14:41 2024
+    Info: Elapsed time: 00:00:44
+    Info: Total CPU time (on all processors): 00:01:38
 
 
 +----------------------------+

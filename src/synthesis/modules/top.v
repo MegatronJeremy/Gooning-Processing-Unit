@@ -40,6 +40,9 @@ module top #(
 
   wire [ADDR_WIDTH-1:0] pc_out, sp_out;
 
+  wire cpu_in = {{(DATA_WIDTH - 4) {1'b0}}, sw[3:0]};
+  wire cpu_out = {{(DATA_WIDTH - 5) {1'b0}}, led[4:0]};
+
   cpu #(
       .ADDR_WIDTH(ADDR_WIDTH),
       .DATA_WIDTH(DATA_WIDTH)
@@ -47,11 +50,11 @@ module top #(
       .clk(clk_div_out),
       .rst_n(rst_n),
       .mem_in(mem_out),
-      .in(sw[3:0]),
+      .in(cpu_in),
       .mem_we(mem_we),
       .mem_addr(mem_addr),
       .mem_data(mem_data),
-      .out(led[4:0]),
+      .out(cpu_out),
       .pc(pc_out),
       .sp(sp_out)
   );

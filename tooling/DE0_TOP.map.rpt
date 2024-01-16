@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE0_TOP
-Tue Jan 16 00:13:55 2024
+Tue Jan 16 20:43:44 2024
 Quartus II 32-bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -63,7 +63,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Jan 16 00:13:55 2024      ;
+; Analysis & Synthesis Status        ; Successful - Tue Jan 16 20:43:44 2024      ;
 ; Quartus II 32-bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; DE0_TOP                                    ;
 ; Top-level Entity Name              ; DE0_TOP                                    ;
@@ -172,33 +172,33 @@ applicable agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 12          ;
-; Maximum allowed            ; 12          ;
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
 ; Maximum used               ; 1           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-12        ;   0.0%      ;
+;     Processors 2-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                     ;
-+-------------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path    ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                                    ; Library ;
-+-------------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------------------------------------+---------+
-; ../src/synthesis/modules/ssd.v      ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive - student.etf.bg.ac.rs/Desktop/Gooning-Processing-Unit/src/synthesis/modules/ssd.v      ;         ;
-; ../src/synthesis/modules/bcd.v      ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive - student.etf.bg.ac.rs/Desktop/Gooning-Processing-Unit/src/synthesis/modules/bcd.v      ;         ;
-; ../src/synthesis/modules/clk_div.v  ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive - student.etf.bg.ac.rs/Desktop/Gooning-Processing-Unit/src/synthesis/modules/clk_div.v  ;         ;
-; ../src/synthesis/modules/alu.v      ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive - student.etf.bg.ac.rs/Desktop/Gooning-Processing-Unit/src/synthesis/modules/alu.v      ;         ;
-; ../src/synthesis/modules/register.v ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive - student.etf.bg.ac.rs/Desktop/Gooning-Processing-Unit/src/synthesis/modules/register.v ;         ;
-; ../src/synthesis/modules/cpu.v      ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive - student.etf.bg.ac.rs/Desktop/Gooning-Processing-Unit/src/synthesis/modules/cpu.v      ;         ;
-; ../src/synthesis/modules/memory.v   ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive - student.etf.bg.ac.rs/Desktop/Gooning-Processing-Unit/src/synthesis/modules/memory.v   ;         ;
-; ../src/synthesis/modules/top.v      ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive - student.etf.bg.ac.rs/Desktop/Gooning-Processing-Unit/src/synthesis/modules/top.v      ;         ;
-; ../src/synthesis/DE0_TOP.v          ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive - student.etf.bg.ac.rs/Desktop/Gooning-Processing-Unit/src/synthesis/DE0_TOP.v          ;         ;
-+-------------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                   ;
++-------------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path    ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                  ; Library ;
++-------------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------------------+---------+
+; ../src/synthesis/modules/ssd.v      ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive/Desktop/VLSI/Gooning-Processing-Unit/src/synthesis/modules/ssd.v      ;         ;
+; ../src/synthesis/modules/bcd.v      ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive/Desktop/VLSI/Gooning-Processing-Unit/src/synthesis/modules/bcd.v      ;         ;
+; ../src/synthesis/modules/clk_div.v  ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive/Desktop/VLSI/Gooning-Processing-Unit/src/synthesis/modules/clk_div.v  ;         ;
+; ../src/synthesis/modules/alu.v      ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive/Desktop/VLSI/Gooning-Processing-Unit/src/synthesis/modules/alu.v      ;         ;
+; ../src/synthesis/modules/register.v ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive/Desktop/VLSI/Gooning-Processing-Unit/src/synthesis/modules/register.v ;         ;
+; ../src/synthesis/modules/cpu.v      ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive/Desktop/VLSI/Gooning-Processing-Unit/src/synthesis/modules/cpu.v      ;         ;
+; ../src/synthesis/modules/memory.v   ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive/Desktop/VLSI/Gooning-Processing-Unit/src/synthesis/modules/memory.v   ;         ;
+; ../src/synthesis/modules/top.v      ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive/Desktop/VLSI/Gooning-Processing-Unit/src/synthesis/modules/top.v      ;         ;
+; ../src/synthesis/DE0_TOP.v          ; yes             ; User Verilog HDL File  ; C:/Users/xparh/OneDrive/Desktop/VLSI/Gooning-Processing-Unit/src/synthesis/DE0_TOP.v          ;         ;
++-------------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------------------+
@@ -569,8 +569,9 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
 ; Port ; Type   ; Severity ; Details                                                                                                                                      ;
 +------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; in   ; Input  ; Warning  ; Input port expression (4 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "in[15..4]" will be connected to GND. ;
-; out  ; Output ; Warning  ; Output or bidir port (16 bits) is wider than the port expression (5 bits) it drives; bit(s) "out[15..5]" have no fanouts                     ;
+; in   ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "in[15..1]" will be connected to GND. ;
+; out  ; Output ; Warning  ; Output or bidir port (16 bits) is wider than the port expression (1 bits) it drives; bit(s) "out[15..1]" have no fanouts                     ;
+; out  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
 +------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
 
 
@@ -589,7 +590,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:02     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -612,32 +613,32 @@ Info: Running Quartus II 32-bit Analysis & Synthesis
     Info: programming logic devices manufactured by Altera and sold by 
     Info: Altera or its authorized distributors.  Please refer to the 
     Info: applicable agreement for further details.
-    Info: Processing started: Tue Jan 16 00:13:42 2024
+    Info: Processing started: Tue Jan 16 20:43:10 2024
 Info: Command: quartus_map --family=CycloneIII --source=../src/synthesis/modules/ssd.v --source=../src/synthesis/modules/bcd.v --source=../src/synthesis/modules/debouncer.v --source=../src/synthesis/modules/red.v --source=../src/synthesis/modules/clk_div.v --source=../src/synthesis/modules/alu.v --source=../src/synthesis/modules/register.v --source=../src/synthesis/modules/cpu.v --source=../src/synthesis/modules/memory.v --source=../src/synthesis/modules/top.v --source=../src/synthesis/DE0_CV_TOP.v --source=../src/synthesis/DE0_TOP.v DE0_TOP
-Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
-Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive - student.etf.bg.ac.rs/desktop/gooning-processing-unit/src/synthesis/modules/ssd.v
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive/desktop/vlsi/gooning-processing-unit/src/synthesis/modules/ssd.v
     Info (12023): Found entity 1: ssd
-Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive - student.etf.bg.ac.rs/desktop/gooning-processing-unit/src/synthesis/modules/bcd.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive/desktop/vlsi/gooning-processing-unit/src/synthesis/modules/bcd.v
     Info (12023): Found entity 1: bcd
-Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive - student.etf.bg.ac.rs/desktop/gooning-processing-unit/src/synthesis/modules/debouncer.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive/desktop/vlsi/gooning-processing-unit/src/synthesis/modules/debouncer.v
     Info (12023): Found entity 1: debouncer
-Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive - student.etf.bg.ac.rs/desktop/gooning-processing-unit/src/synthesis/modules/red.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive/desktop/vlsi/gooning-processing-unit/src/synthesis/modules/red.v
     Info (12023): Found entity 1: red
-Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive - student.etf.bg.ac.rs/desktop/gooning-processing-unit/src/synthesis/modules/clk_div.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive/desktop/vlsi/gooning-processing-unit/src/synthesis/modules/clk_div.v
     Info (12023): Found entity 1: clk_div
-Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive - student.etf.bg.ac.rs/desktop/gooning-processing-unit/src/synthesis/modules/alu.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive/desktop/vlsi/gooning-processing-unit/src/synthesis/modules/alu.v
     Info (12023): Found entity 1: alu
-Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive - student.etf.bg.ac.rs/desktop/gooning-processing-unit/src/synthesis/modules/register.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive/desktop/vlsi/gooning-processing-unit/src/synthesis/modules/register.v
     Info (12023): Found entity 1: register
-Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive - student.etf.bg.ac.rs/desktop/gooning-processing-unit/src/synthesis/modules/cpu.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive/desktop/vlsi/gooning-processing-unit/src/synthesis/modules/cpu.v
     Info (12023): Found entity 1: cpu
-Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive - student.etf.bg.ac.rs/desktop/gooning-processing-unit/src/synthesis/modules/memory.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive/desktop/vlsi/gooning-processing-unit/src/synthesis/modules/memory.v
     Info (12023): Found entity 1: memory
-Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive - student.etf.bg.ac.rs/desktop/gooning-processing-unit/src/synthesis/modules/top.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive/desktop/vlsi/gooning-processing-unit/src/synthesis/modules/top.v
     Info (12023): Found entity 1: top
-Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive - student.etf.bg.ac.rs/desktop/gooning-processing-unit/src/synthesis/de0_cv_top.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive/desktop/vlsi/gooning-processing-unit/src/synthesis/de0_cv_top.v
     Info (12023): Found entity 1: DE0_CV_TOP
-Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive - student.etf.bg.ac.rs/desktop/gooning-processing-unit/src/synthesis/de0_top.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/xparh/onedrive/desktop/vlsi/gooning-processing-unit/src/synthesis/de0_top.v
     Info (12023): Found entity 1: DE0_TOP
 Warning (10236): Verilog HDL Implicit Net warning at debouncer.v(15): created implicit net for "changed"
 Warning (10236): Verilog HDL Implicit Net warning at debouncer.v(16): created implicit net for "stable"
@@ -675,7 +676,10 @@ Warning (10034): Output port "SD_CLK" at DE0_TOP.v(181) has no driver
 Warning (10034): Output port "VGA_HS" at DE0_TOP.v(189) has no driver
 Warning (10034): Output port "VGA_VS" at DE0_TOP.v(190) has no driver
 Info (12128): Elaborating entity "top" for hierarchy "top:top_inst"
-Warning (10034): Output port "led[9..5]" at top.v(10) has no driver
+Warning (10230): Verilog HDL assignment warning at top.v(43): truncated value with size 16 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at top.v(44): truncated value with size 16 to match size of target (1)
+Warning (10030): Net "led[0]" at top.v(10) has no driver or initial value, using a default initial value '0'
+Warning (10034): Output port "led[9..1]" at top.v(10) has no driver
 Info (12128): Elaborating entity "clk_div" for hierarchy "top:top_inst|clk_div:div"
 Info (12128): Elaborating entity "memory" for hierarchy "top:top_inst|memory:memory"
 Info (12128): Elaborating entity "cpu" for hierarchy "top:top_inst|cpu:cpu"
@@ -941,7 +945,7 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "GPIO1_CLKOUT[0]" is stuck at GND
     Warning (13410): Pin "GPIO1_CLKOUT[1]" is stuck at GND
 Info (17049): 23 registers lost all their fanouts during netlist optimizations.
-Info (144001): Generated suppressed messages file C:/Users/xparh/OneDrive - student.etf.bg.ac.rs/Desktop/Gooning-Processing-Unit/tooling/DE0_TOP.map.smsg
+Info (144001): Generated suppressed messages file C:/Users/xparh/OneDrive/Desktop/VLSI/Gooning-Processing-Unit/tooling/DE0_TOP.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 23 input pin(s) that do not drive logic
@@ -972,16 +976,16 @@ Info (21057): Implemented 252 device resources after synthesis - the final resou
     Info (21058): Implemented 23 input pins
     Info (21059): Implemented 118 output pins
     Info (21060): Implemented 111 bidirectional pins
-Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 315 warnings
-    Info: Peak virtual memory: 400 megabytes
-    Info: Processing ended: Tue Jan 16 00:13:56 2024
-    Info: Elapsed time: 00:00:14
-    Info: Total CPU time (on all processors): 00:00:23
+Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 318 warnings
+    Info: Peak virtual memory: 435 megabytes
+    Info: Processing ended: Tue Jan 16 20:43:44 2024
+    Info: Elapsed time: 00:00:34
+    Info: Total CPU time (on all processors): 00:00:30
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in C:/Users/xparh/OneDrive - student.etf.bg.ac.rs/Desktop/Gooning-Processing-Unit/tooling/DE0_TOP.map.smsg.
+The suppressed messages can be found in C:/Users/xparh/OneDrive/Desktop/VLSI/Gooning-Processing-Unit/tooling/DE0_TOP.map.smsg.
 
 

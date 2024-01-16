@@ -1,8 +1,27 @@
-Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
-C:\Program Files\altera\13.1\modelsim_ase\win32aloem\vlog.exe -work work -l ./vlog_compile.log -override_timescale 1 ps / 1 ps ../src/simulation/modules/alu.v ../src/simulation/modules/register.v ../src/simulation/top.v 
--- Compiling module alu
--- Compiling module register
--- Compiling module top
+QuestaSim-64 vopt 2021.1 Compiler 2021.01 Jan 19 2021
+Start time: 11:04:49 on Jan 16,2024
+vopt -work work -l ./vlog_compile.log -override_timescale 1 ps / 1 ps "+acc" -o optimized_design register top 
 
 Top level modules:
+	register
 	top
+
+Analyzing design...
+-- Loading module register
+-- Loading module top
+-- Loading package mtiUvm.questa_uvm_pkg
+-- Loading interface register_if
+Optimizing 8 design-units (inlining 0/4 module instances):
+-- Optimizing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)(fast)
+-- Optimizing package mtiUvm.questa_uvm_pkg(fast)
+-- Optimizing package top_sv_unit(fast)
+** Warning: ../src/simulation/top.sv(59): (vopt-2240) Treating stand-alone use of function 'randomize' as an implicit VOID cast.
+** Warning: ../src/simulation/top.sv(195): (vopt-2250) Function "write" has no return value assignment.
+-- Optimizing module register(fast__1)
+-- Optimizing module register(fast)
+-- Optimizing module top(fast)
+-- Optimizing interface register_if(fast__2)
+-- Optimizing interface register_if(fast)
+Optimized design name is optimized_design
+End time: 11:04:51 on Jan 16,2024, Elapsed time: 0:00:02
+Errors: 0, Warnings: 2

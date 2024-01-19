@@ -1,10 +1,12 @@
 
 State Machine - |DE0_TOP|top:top_inst|cpu:cpu|state_reg
-Name state_reg.IDLE state_reg.EX4 state_reg.EX3 state_reg.EX2 state_reg.EX1 state_reg.ID state_reg.IF 
-state_reg.IF 0 0 0 0 0 0 0 
-state_reg.ID 0 0 0 0 0 1 1 
-state_reg.EX1 0 0 0 0 1 0 1 
-state_reg.EX2 0 0 0 1 0 0 1 
-state_reg.EX3 0 0 1 0 0 0 1 
-state_reg.EX4 0 1 0 0 0 0 1 
-state_reg.IDLE 1 0 0 0 0 0 1 
+Name state_reg.EX5 state_reg.EX4 state_reg.EX3 state_reg.EX2 state_reg.EX1 state_reg.ID state_reg.IF2 state_reg.IF1 state_reg.IDLE 
+state_reg.IF1 0 0 0 0 0 0 0 0 0 
+state_reg.IF2 0 0 0 0 0 0 1 1 0 
+state_reg.ID 0 0 0 0 0 1 0 1 0 
+state_reg.EX1 0 0 0 0 1 0 0 1 0 
+state_reg.EX2 0 0 0 1 0 0 0 1 0 
+state_reg.EX3 0 0 1 0 0 0 0 1 0 
+state_reg.EX4 0 1 0 0 0 0 0 1 0 
+state_reg.EX5 1 0 0 0 0 0 0 1 0 
+state_reg.IDLE 0 0 0 0 0 0 0 1 1 

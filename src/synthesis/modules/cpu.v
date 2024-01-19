@@ -1,6 +1,6 @@
 module cpu #(
-    ADDR_WIDTH = 6,
-    DATA_WIDTH = 16
+    parameter ADDR_WIDTH = 6,
+    parameter DATA_WIDTH = 16
 ) (
     input clk,
     input rst_n,
@@ -23,17 +23,19 @@ module cpu #(
   ) pc_reg (
       .clk(clk),
       .rst_n(rst_n),
-      .cl(0),
+      .cl(1'b0),
       .ld(pc_ld),
       .inc(pc_inc),
-      .dec(0),
-      .sr(0),
-      .ir(0),
-      .sl(0),
-      .il(0),
+      .dec(1'b0),
+      .sr(1'b0),
+      .ir(1'b0),
+      .sl(1'b0),
+      .il(1'b0),
       .in(pc_in),
       .out(pc)
   );
+
+  reg [5:0] sp_in;
 
   // SP
   register #(
@@ -41,15 +43,15 @@ module cpu #(
   ) sp_reg (
       .clk(clk),
       .rst_n(rst_n),
-      .cl(0),
-      .ld(0),
-      .inc(0),
-      .dec(0),
-      .sr(0),
-      .ir(0),
-      .sl(0),
-      .il(0),
-      .in(0),
+      .cl(1'b0),
+      .ld(1'b0),
+      .inc(1'b0),
+      .dec(1'b0),
+      .sr(1'b0),
+      .ir(1'b0),
+      .sl(1'b0),
+      .il(1'b0),
+      .in(sp_in),
       .out(sp)
   );
 
@@ -71,14 +73,14 @@ module cpu #(
   ) ir_high (
       .clk(clk),
       .rst_n(rst_n),
-      .cl(0),
+      .cl(1'b0),
       .ld(ir_high_ld),
-      .inc(0),
-      .dec(0),
-      .sr(0),
-      .ir(0),
-      .sl(0),
-      .il(0),
+      .inc(1'b0),
+      .dec(1'b0),
+      .sr(1'b0),
+      .ir(1'b0),
+      .sl(1'b0),
+      .il(1'b0),
       .in(mem_in),
       .out(ir_high_out)
   );
@@ -88,14 +90,14 @@ module cpu #(
   ) ir_low (
       .clk(clk),
       .rst_n(rst_n),
-      .cl(0),
+      .cl(1'b0),
       .ld(ir_low_ld),
-      .inc(0),
-      .dec(0),
-      .sr(0),
-      .ir(0),
-      .sl(0),
-      .il(0),
+      .inc(1'b0),
+      .dec(1'b0),
+      .sr(1'b0),
+      .ir(1'b0),
+      .sl(1'b0),
+      .il(1'b0),
       .in(mem_in),
       .out(ir_low_out)
   );
@@ -111,14 +113,14 @@ module cpu #(
   ) a_reg (
       .clk(clk),
       .rst_n(rst_n),
-      .cl(0),
+      .cl(1'b0),
       .ld(a_ld),
-      .inc(0),
-      .dec(0),
-      .sr(0),
-      .ir(0),
-      .sl(0),
-      .il(0),
+      .inc(1'b0),
+      .dec(1'b0),
+      .sr(1'b0),
+      .ir(1'b0),
+      .sl(1'b0),
+      .il(1'b0),
       .in(a_in),
       .out(a_out)
   );
@@ -138,13 +140,15 @@ module cpu #(
   );
 
   // Output regs
-  reg [2:0] state_reg, state_next;
+  reg [3:0] state_reg, state_next;
   reg [1:0] loading_reg, loading_next;
   reg [1:0] storing_reg, storing_next;
   reg [DATA_WIDTH-1:0] out_reg, out_next;
 
+  assign out = out_reg;
+
   localparam DIRECT = 0, INDIRECT1 = 1, INDIRECT2 = 2, DONE = 3;
-  localparam IF = 0, ID = 1, EX1 = 2, EX2 = 3, EX3 = 4, EX4 = 5, IDLE = 6;
+  localparam IF1 = 0, IF2 = 1, ID = 2, EX1 = 3, EX2 = 4, EX3 = 5, EX4 = 6, EX5 = 7, IDLE = 8;
   localparam MOV = 4'b0000, 
     ADD = 4'b0001, SUB = 4'b0010, MUL = 4'b0011, DIV = 4'b0100,
     IN = 4'b0111, OUT = 4'b1000,
@@ -152,7 +156,7 @@ module cpu #(
 
   always @(posedge clk, negedge rst_n) begin
     if (!rst_n) begin
-      state_reg <= IF;
+      state_reg <= IF1;
       out_reg <= 0;
       loading_reg <= DONE;
       storing_reg <= DONE;
@@ -165,76 +169,84 @@ module cpu #(
   end
 
   function reg load(input reg [5:0] addr, input reg mode);
-    if (loading_next == DONE) begin
-      if (mode == 0) begin
-        loading_next = DIRECT;
-      end else begin
-        loading_next = INDIRECT1;
+    begin
+      if (loading_next == DONE) begin
+        if (mode == 0) begin
+          loading_next = DIRECT;
+        end else begin
+          loading_next = INDIRECT1;
+        end
       end
+
+      case (loading_next)
+        DIRECT: begin
+          mem_addr = addr;
+
+          loading_next = DONE;
+
+          load = 1;
+        end
+        INDIRECT1: begin
+          mem_addr = addr;
+
+          loading_next = INDIRECT2;
+
+          load = 0;
+        end
+        INDIRECT2: begin
+          mem_addr = mem_in;
+
+          loading_next = DONE;
+
+          load = 1;
+        end
+        default: load = 1;
+      endcase
     end
-
-    case (loading_next)
-      DIRECT: begin
-        mem_addr = addr;
-
-        loading_next = DONE;
-
-        load = 1;
-      end
-      INDIRECT1: begin
-        mem_addr = addr;
-
-        loading_next = INDIRECT2;
-
-        load = 0;
-      end
-      INDIRECT2: begin
-        mem_addr = mem_in;
-
-        loading_next = DONE;
-
-        load = 1;
-      end
-      default: load = 1;
-    endcase
   endfunction
 
-  function reg store(input reg [15:0] addr, input reg [5:0] data, input reg mode);
-    if (storing_next == DONE) begin
-      if (mode == 0) begin
-        storing_next = DIRECT;
-      end else begin
-        storing_next = INDIRECT1;
+  function reg store(input reg [5:0] addr, input reg [15:0] data, input reg mode);
+    begin
+      if (storing_next == DONE) begin
+        if (mode == 0) begin
+          storing_next = DIRECT;
+        end else begin
+          storing_next = INDIRECT1;
+        end
       end
+
+      case (storing_next)
+        DIRECT: begin
+          mem_addr = addr;
+          mem_we = 1;
+
+          mem_data = data;
+
+          storing_next = DONE;
+
+          store = 1;
+        end
+        INDIRECT1: begin
+          // first load address to store to (just like load)
+          mem_addr = addr;
+
+          storing_next = INDIRECT2;
+
+          store = 0;
+        end
+        INDIRECT2: begin
+          mem_addr = mem_in;  // address is data from previous cycle
+          mem_we = 1;
+
+          mem_data = data;
+
+          storing_next = DONE;
+
+          store = 1;
+        end
+        default: store = 1;
+      endcase
     end
-
-    case (storing_next)
-      DIRECT: begin
-        mem_addr = addr;
-        mem_we = 1;
-
-        mem_data = data;
-
-        store = 1;
-      end
-      INDIRECT1: begin
-        // first load address to store to (just like load)
-        mem_addr = addr;
-
-        loading_next = INDIRECT2;
-
-        store = 0;
-      end
-      INDIRECT2: begin
-        mem_addr = mem_in;  // address is data from previous cycle
-        mem_we = 1;
-
-        mem_data = data;
-
-        store = 1;
-      end
-      default: store = 1;
-    endcase
   endfunction
 
   always @(*) begin
@@ -254,6 +266,8 @@ module cpu #(
     pc_inc = 0;
     pc_ld = 0;
 
+    sp_in = 0;
+
     a_ld = 0;
     a_in = 0;
 
@@ -261,12 +275,17 @@ module cpu #(
     alu_b_in = 0;
 
     case (state_reg)
-      IF: begin
+      IF1: begin
         // instruction fetch - load next instruction
-        mem_addr = pc + 8;
+        mem_addr   = pc + 8;
 
+        state_next = IF2;
+      end
+      IF2: begin
         pc_inc = 1;
         ir_high_ld = 1;
+
+        state_next = ID;
       end
       ID: begin
         case (op_code)
@@ -277,9 +296,9 @@ module cpu #(
 
               pc_inc = 1;
               ir_low_ld = 1;
-
-              state_next = EX1;
             end
+
+            state_next = EX1;
           end
           default: state_next = EX1;
         endcase
@@ -299,7 +318,7 @@ module cpu #(
               if (store(op_a_addr, op_const, op_a_mode) == 0) begin
                 state_next = EX1;
               end else begin
-                state_next = IF;
+                state_next = IF1;
               end
             end
           end
@@ -308,7 +327,7 @@ module cpu #(
             if (store(op_a_addr, in, op_a_mode) == 0) begin
               state_next = EX1;
             end else begin
-              state_next = IF;
+              state_next = IF1;
             end
           end
           OUT: begin
@@ -339,7 +358,7 @@ module cpu #(
               state_next = EX2;
             end
           end
-          default: state_next = IF;
+          default: state_next = IF1;
         endcase
       end
       EX2: begin
@@ -349,14 +368,14 @@ module cpu #(
             if (store(op_a_addr, mem_in, op_a_mode) == 0) begin
               state_next = EX2;
             end else begin
-              state_next = IF;
+              state_next = IF1;
             end
           end
           OUT: begin
             // write to output
             out_next   = mem_in;
 
-            state_next = IF;
+            state_next = IF1;
           end
           ADD, SUB, MUL, DIV: begin
             // store src b to acc
@@ -381,7 +400,7 @@ module cpu #(
               state_next = EX3;
             end
           end
-          default: state_next = IF;
+          default: state_next = IF1;
         endcase
       end
       EX3: begin
@@ -393,6 +412,8 @@ module cpu #(
             end else begin
               state_next = EX4;
             end
+
+            state_next = EX4;
           end
           STOP: begin
             if (op_b_addr != 0) begin
@@ -410,22 +431,22 @@ module cpu #(
               state_next = EX4;
             end
           end
-          default: state_next = IF;
+          default: state_next = IF1;
         endcase
       end
       EX4: begin
         case (op_code)
           ADD, SUB, MUL, DIV: begin
-            // store result to mem
+            // store result to acc first
             alu_a_in = a_out;
             alu_b_in = mem_in;
 
-            if (store(op_a_addr, alu_f_out, op_a_mode) == 0) begin
-              state_next = EX4;
-            end else begin
-              state_next = IF;
-            end
+            a_in = alu_f_out;
+            a_ld = 1;
+
+            state_next = EX5;
           end
+
           STOP: begin
             if (op_c_addr != 0) begin
               out_next = mem_in;
@@ -433,7 +454,19 @@ module cpu #(
 
             state_next = IDLE;
           end
-          default: state_next = IF;
+          default: state_next = IF1;
+        endcase
+      end
+      EX5: begin
+        case (op_code)
+          ADD, SUB, MUL, DIV: begin
+            if (store(op_a_addr, a_out, op_a_mode) == 0) begin
+              state_next = EX5;
+            end else begin
+              state_next = IF1;
+            end
+          end
+          default: state_next = IF1;
         endcase
       end
       IDLE: begin
@@ -441,5 +474,4 @@ module cpu #(
       end
     endcase
   end
-
 endmodule

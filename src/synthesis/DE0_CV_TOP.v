@@ -32,67 +32,69 @@
 //   V1.0 :| Yue Yang          :| 08/25/2014:| Initial Revision
 // ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  == 
 
-module DE0_CV_TOP(input CLOCK2_50,
-                  input CLOCK3_50,
-                  inout CLOCK4_50,
-                  input CLOCK_50,
-                  output [12:0] DRAM_ADDR,
-                  output [1:0] DRAM_BA,
-                  output DRAM_CAS_N,
-                  output DRAM_CKE,
-                  output DRAM_CLK,
-                  output DRAM_CS_N,
-                  inout [15:0] DRAM_DQ,
-                  output DRAM_LDQM,
-                  output DRAM_RAS_N,
-                  output DRAM_UDQM,
-                  output DRAM_WE_N,
-                  inout [35:0] GPIO_0,
-                  inout [35:0] GPIO_1,
-                  output [6:0] HEX0,
-                  output [6:0] HEX1,
-                  output [6:0] HEX2,
-                  output [6:0] HEX3,
-                  output [6:0] HEX4,
-                  output [6:0] HEX5,
-                  input [3:0] KEY,
-                  output [9:0] LEDR,
-                  inout PS2_CLK,
-                  inout PS2_CLK2,
-                  inout PS2_DAT,
-                  inout PS2_DAT2,
-                  input RESET_N,
-                  output SD_CLK,
-                  inout SD_CMD,
-                  inout [3:0] SD_DATA,
-                  input [9:0] SW,
-                  output [3:0] VGA_B,
-                  output [3:0] VGA_G,
-                  output VGA_HS,
-                  output [3:0] VGA_R,
-                  output VGA_VS);
-    
-    // ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  == 
-    //  REG/WIRE declarations
-    // ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  == 
-    
-    assign {HEX3, HEX2} = 14'h3FFF;
+module DE0_CV_TOP (
+    input CLOCK2_50,
+    input CLOCK3_50,
+    inout CLOCK4_50,
+    input CLOCK_50,
+    output [12:0] DRAM_ADDR,
+    output [1:0] DRAM_BA,
+    output DRAM_CAS_N,
+    output DRAM_CKE,
+    output DRAM_CLK,
+    output DRAM_CS_N,
+    inout [15:0] DRAM_DQ,
+    output DRAM_LDQM,
+    output DRAM_RAS_N,
+    output DRAM_UDQM,
+    output DRAM_WE_N,
+    inout [35:0] GPIO_0,
+    inout [35:0] GPIO_1,
+    output [6:0] HEX0,
+    output [6:0] HEX1,
+    output [6:0] HEX2,
+    output [6:0] HEX3,
+    output [6:0] HEX4,
+    output [6:0] HEX5,
+    input [3:0] KEY,
+    output [9:0] LEDR,
+    inout PS2_CLK,
+    inout PS2_CLK2,
+    inout PS2_DAT,
+    inout PS2_DAT2,
+    input RESET_N,
+    output SD_CLK,
+    inout SD_CMD,
+    inout [3:0] SD_DATA,
+    input [9:0] SW,
+    output [3:0] VGA_B,
+    output [3:0] VGA_G,
+    output VGA_HS,
+    output [3:0] VGA_R,
+    output VGA_VS
+);
 
-    // ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  == 
-    //  Structural coding
-    // ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  == 
-    
-    top #(
+  // ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  == 
+  //  REG/WIRE declarations
+  // ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  == 
+
+  assign {HEX3, HEX2} = 14'h3FFF;
+
+  // ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  == 
+  //  Structural coding
+  // ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  == 
+
+  top #(
       .DIVISOR(50_000_000),
       .FILE_NAME("mem_init.mif"),
       .ADDR_WIDTH(6),
       .DATA_WIDTH(16)
-    ) top_inst (
+  ) top_inst (
       .clk(CLOCK_50),
-      .btn(~KEY[2:0]),
-      .sw(SW[9:0]),
+      .rst_n(SW[9]),
+      .sw(SW[8:0]),
       .led(LEDR[9:0]),
       .hex({HEX5, HEX4, HEX1, HEX0})
-    );
+  );
 
 endmodule

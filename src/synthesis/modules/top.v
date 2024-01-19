@@ -1,8 +1,8 @@
 module top #(
-    DIVISOR = 50_000_000,
-    FILE_NAME = "mem_init.mif",
-    ADDR_WIDTH = 6,
-    DATA_WIDTH = 16
+    parameter DIVISOR = 50_000_000,
+    parameter FILE_NAME = "mem_init.mif",
+    parameter ADDR_WIDTH = 6,
+    parameter DATA_WIDTH = 16
 ) (
     input clk,
     input rst_n,

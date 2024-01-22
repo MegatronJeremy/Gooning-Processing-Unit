@@ -35,9 +35,9 @@ module register #(
     end else if (ld) begin
       out_next = in;
     end else if (inc) begin
-      out_next = out_reg + 1;
+      out_next = out_reg + {{(DATA_WIDTH - 1) {1'b0}}, 1'b1};
     end else if (dec) begin
-      out_next = out_reg - 1;
+      out_next = out_reg - {{(DATA_WIDTH - 1) {1'b0}}, 1'b1};
     end else if (sr) begin
       out_next = {ir, out_reg[DATA_WIDTH-1:1]};
     end else if (sl) begin
